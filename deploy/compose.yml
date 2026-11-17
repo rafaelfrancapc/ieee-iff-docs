@@ -1,0 +1,47 @@
+services:
+  hub:
+    build: ${HUB_SOURCE_DIR:-../../ieee-iff-hub}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      HUB_NEXTCLOUD_URL: ${HUB_NEXTCLOUD_URL:-https://nuvem.ieeeiffcampos.com.br}
+      HUB_ACCOUNT_URL: ${LLDAP_WEB_URL:-https://sso.ieeeiffcampos.com.br}
+      HUB_INVENTORY_URL: ${HUB_INVENTORY_URL:-}
+    networks: [ieee]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  patrimonio:
+    build: ${INVENTORY_SOURCE_DIR:-../../ieee-iff-patrimonio}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8081"
+    environment:
+      HUB_URL: ${HUB_URL:-http://localhost:8080}
+      SEED_DEMO: "false"
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-true}
+      PATRIMONIO_DB_PASSWORD: ${PATRIMONIO_DB_PASSWORD:?Defina a senha da base}
+      LLDAP_LDAP_URL: ${LLDAP_LDAP_URL:?Defina a URL LDAP privada}
+      LLDAP_BASE_DN: ${LLDAP_BASE_DN:?Defina a base DN real}
+      LLDAP_BIND_DN: ${LLDAP_BIND_DN:?Defina a conta de leitura}
+      LLDAP_BIND_PASSWORD: ${LLDAP_BIND_PASSWORD:?Defina a senha da conta de leitura}
+      LLDAP_DIRECTOR_GROUP: ${LLDAP_DIRECTOR_GROUP:-ieee_diretoria}
+      LLDAP_ADMIN_GROUP: ${LLDAP_ADMIN_GROUP:-lldap_admin}
+      LLDAP_WEB_URL: ${LLDAP_WEB_URL:-https://sso.ieeeiffcampos.com.br}
+      LLDAP_API_URL: ${LLDAP_API_URL:?Defina a origem da API interna}
+      LLDAP_API_USERNAME: ${LLDAP_API_USERNAME:?Defina a conta administrativa de integração}
+      LLDAP_API_PASSWORD: ${LLDAP_API_PASSWORD:?Defina a senha da conta de integração}
+    networks: [ieee]
+    volumes: [patrimonio-data:/app/data]
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+volumes:
+  patrimonio-data:
+networks:
+  ieee:
+    external: true
+    name: ${IEEE_NETWORK:-ieee-internal}

@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*.log
+*.mv.db
+*.trace.db
+backups/
+secrets/

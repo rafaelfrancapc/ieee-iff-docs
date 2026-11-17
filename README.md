@@ -10,6 +10,7 @@ Documentação de arquitetura, acesso e operação do Hub e do inventário físi
 
 ## Guias
 
+- [Ambiente de teste implantado](docs/AMBIENTE-DE-TESTE.md)
 - [Arquitetura](docs/ARQUITETURA.md)
 - [Papéis e sigilo](docs/ACESSOS-E-SIGILO.md)
 - [Implantação com LLDAP](docs/IMPLANTACAO.md)

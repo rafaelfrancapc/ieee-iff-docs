@@ -22,6 +22,7 @@ services:
       HUB_URL: ${HUB_URL:-http://localhost:8080}
       SEED_DEMO: "false"
       SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-true}
+      SERVER_FORWARD_HEADERS_STRATEGY: framework
       PATRIMONIO_DB_PASSWORD: ${PATRIMONIO_DB_PASSWORD:?Defina a senha da base}
       LLDAP_LDAP_URL: ${LLDAP_LDAP_URL:?Defina a URL LDAP privada}
       LLDAP_BASE_DN: ${LLDAP_BASE_DN:?Defina a base DN real}

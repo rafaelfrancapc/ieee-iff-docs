@@ -1,5 +1,7 @@
 # Implantação com LLDAP
 
+Para o servidor já instalado, consulte [Ambiente de teste implantado](AMBIENTE-DE-TESTE.md). Os passos abaixo descrevem uma implantação alternativa, não os comandos do servidor ativo.
+
 ## Preparar as fontes
 
 Clone os três repositórios como pastas irmãs:

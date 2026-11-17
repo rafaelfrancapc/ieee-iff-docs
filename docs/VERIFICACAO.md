@@ -13,6 +13,6 @@ O inventário verifica hierarquia, transações, auditoria, autenticação LDAP 
 
 O navegador foi usado para revisar login, mapa, classificação, administração, cadastro de conta fictícia, atribuição de papel, histórico, temas e largura móvel. As capturas estão em `docs/preview` no repositório do inventário e contêm apenas dados de exemplo.
 
-O LDAP de teste usa UnboundID, e a administração GraphQL usa um servidor HTTP simulado. A suíte não altera o LLDAP de produção e não substitui a validação da implantação real com os seus endereços, DN e credenciais. O exemplo Docker foi preparado, mas não executado no ambiente local porque o daemon estava indisponível.
+O LDAP de teste usa UnboundID, e a administração GraphQL usa um servidor HTTP simulado. A suíte não altera o LLDAP de produção e não substitui a validação da implantação real com os seus endereços, DN e credenciais. O exemplo Docker deste repositório é alternativo; o ambiente de teste executado é descrito em [Ambiente de teste implantado](AMBIENTE-DE-TESTE.md).
 
 Nenhum DNS, túnel ou serviço externo é criado ao publicar os repositórios. A instalação requer os passos descritos no guia de implantação.
